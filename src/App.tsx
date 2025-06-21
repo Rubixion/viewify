@@ -11,7 +11,9 @@ import TemplateModal from './components/TemplateModal';
 function App() {
   const [selectedTemplate, setSelectedTemplate] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState('all');
+  
 
+  
   const handleTemplateSelect = (template) => {
     setSelectedTemplate(template);
   };
