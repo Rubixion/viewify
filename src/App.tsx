@@ -8,11 +8,19 @@ import Newsletter from './components/Newsletter';
 import Footer from './components/Footer';
 import TemplateModal from './components/TemplateModal';
 
-function App() {
-  const [selectedTemplate, setSelectedTemplate] = useState(null);
-  const [selectedCategory, setSelectedCategory] = useState('all');
+// Define an interface for the template object (example)
+interface Template {
+  id: string;
+  title: string;
+  // add other properties your template has
+}
 
-  const handleTemplateSelect = (template) => {
+function App() {
+  // selectedTemplate can be Template or null initially
+  const [selectedTemplate, setSelectedTemplate] = useState<Template | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+
+  const handleTemplateSelect = (template: Template) => {
     setSelectedTemplate(template);
   };
 
@@ -20,7 +28,7 @@ function App() {
     setSelectedTemplate(null);
   };
 
-  const handleCategorySelect = (category) => {
+  const handleCategorySelect = (category: string) => {
     setSelectedCategory(category);
     // Smooth scroll to templates section
     const templatesSection = document.getElementById('templates');
@@ -29,7 +37,7 @@ function App() {
     }
   };
 
-  const scrollToSection = (sectionId) => {
+  const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -54,7 +62,7 @@ function App() {
         <Features />
       </div>
       <div id="newsletter">
-        <Newsletter onSubscribe={(email) => console.log('Newsletter signup:', email)} />
+        <Newsletter onSubscribe={(email: string) => console.log('Newsletter signup:', email)} />
       </div>
       <div id="contact">
         <Footer />
