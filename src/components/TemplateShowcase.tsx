@@ -20,7 +20,6 @@ interface TemplateShowcaseProps {
 const TemplateShowcase: React.FC<TemplateShowcaseProps> = ({ selectedCategory, onTemplateSelect }) => {
   const [activeTab, setActiveTab] = useState('trending');
   const [favorites, setFavorites] = useState<number[]>([]);
-  const [scrollPosition, setScrollPosition] = useState(0);
 
   const allTemplates: Template[] = [
     {
@@ -367,3 +366,9 @@ const TemplateShowcase: React.FC<TemplateShowcaseProps> = ({ selectedCategory, o
 };
 
 export default TemplateShowcase;
+function setScrollPosition(position: number) {
+  const container = document.getElementById('templates-scroll');
+  if (container) {
+    container.scrollLeft = position;
+  }
+}
