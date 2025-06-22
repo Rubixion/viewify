@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import TemplateShowcase from './components/TemplateShowcase';
@@ -8,15 +8,18 @@ import Newsletter from './components/Newsletter';
 import Footer from './components/Footer';
 import TemplateModal from './components/TemplateModal';
 
-// Define an interface for the template object (example)
 interface Template {
-  id: string;
+  id: number;
   title: string;
-  // add other properties your template has
+  category: string;
+  downloads: number;
+  rating: number;
+  price: string;
+  image: string;
+  isPremium: boolean;
 }
 
 function App() {
-  // selectedTemplate can be Template or null initially
   const [selectedTemplate, setSelectedTemplate] = useState<Template | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
@@ -30,7 +33,6 @@ function App() {
 
   const handleCategorySelect = (category: string) => {
     setSelectedCategory(category);
-    // Smooth scroll to templates section
     const templatesSection = document.getElementById('templates');
     if (templatesSection) {
       templatesSection.scrollIntoView({ behavior: 'smooth' });
@@ -68,7 +70,6 @@ function App() {
         <Footer />
       </div>
 
-      {/* Template Modal */}
       {selectedTemplate && (
         <TemplateModal 
           template={selectedTemplate}
