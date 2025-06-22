@@ -357,7 +357,7 @@ const TemplateShowcase: React.FC<TemplateShowcaseProps> = ({ selectedCategory, o
         )}
       </div>
 
-      <style jsx>{`
+      <style>{`
         .scrollbar-hide::-webkit-scrollbar {
           display: none;
         }
