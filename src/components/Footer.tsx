@@ -34,7 +34,10 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer 
+      className="text-white"
+      style={{ background: '#2d3748' }}
+    >
       <div className="container mx-auto px-6 py-16">
         {/* Main Footer Content - 2 columns */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
@@ -44,12 +47,18 @@ const Footer: React.FC = () => {
               className="flex items-center space-x-2 cursor-pointer"
               onClick={scrollToTop}
             >
-              <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                <Instagram className="w-5 h-5 text-white" />
+              <div 
+                className="w-8 h-8 rounded-lg flex items-center justify-center"
+                style={{ background: '#667eea' }}
+              >
+                <Instagram className="w-5 h-5" style={{ color: '#ffffff' }} />
               </div>
               <span className="text-2xl font-bold">Viewify</span>
             </div>
-            <p className="text-gray-400 leading-relaxed">
+            <p 
+              className="leading-relaxed"
+              style={{ color: '#a0aec0' }}
+            >
               Professional Instagram Story templates designed to help creators
               and influencers grow their audience and boost engagement.
             </p>
@@ -66,7 +75,14 @@ const Footer: React.FC = () => {
                     onClick={() =>
                       window.open('https://viewify.store/about', '_blank')
                     }
-                    className="text-gray-400 hover:text-white transition-colors text-left w-full text-left"
+                    className="transition-colors text-left w-full"
+                    style={{ color: '#a0aec0' }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.color = '#ffffff';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.color = '#a0aec0';
+                    }}
                   >
                     About Us
                   </button>
@@ -76,7 +92,14 @@ const Footer: React.FC = () => {
                     onClick={() =>
                       window.open('https://viewify.store/privacy', '_blank')
                     }
-                    className="text-gray-400 hover:text-white transition-colors text-left w-full text-left"
+                    className="transition-colors text-left w-full"
+                    style={{ color: '#a0aec0' }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.color = '#ffffff';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.color = '#a0aec0';
+                    }}
                   >
                     Privacy Policy
                   </button>
@@ -87,7 +110,10 @@ const Footer: React.FC = () => {
             {/* Contact Section */}
             <div className="space-y-4">
               <h3 className="text-lg font-semibold">Contact & Follow Us</h3>
-              <p className="text-gray-400 text-sm">
+              <p 
+                className="text-sm"
+                style={{ color: '#a0aec0' }}
+              >
                 Have questions? Reach out to our team for support.
               </p>
               <div className="flex flex-wrap gap-3">
@@ -98,8 +124,15 @@ const Footer: React.FC = () => {
                       '_blank'
                     )
                   }
-                  className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors"
+                  className="w-10 h-10 rounded-lg flex items-center justify-center transition-colors"
+                  style={{ background: '#4a5568' }}
                   title="Instagram"
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = '#667eea';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = '#4a5568';
+                  }}
                 >
                   <Instagram className="w-5 h-5" />
                 </button>
@@ -110,15 +143,29 @@ const Footer: React.FC = () => {
                       '_blank'
                     )
                   }
-                  className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors"
+                  className="w-10 h-10 rounded-lg flex items-center justify-center transition-colors"
+                  style={{ background: '#4a5568' }}
                   title="TikTok"
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = '#667eea';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = '#4a5568';
+                  }}
                 >
                   <TikTokIcon />
                 </button>
                 <button
                   onClick={handleEmailClick}
-                  className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors"
+                  className="w-10 h-10 rounded-lg flex items-center justify-center transition-colors"
+                  style={{ background: '#4a5568' }}
                   title="Email Us"
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = '#667eea';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = '#4a5568';
+                  }}
                 >
                   <Mail className="w-5 h-5" />
                 </button>
@@ -128,8 +175,14 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-gray-800 pt-8 text-center">
-          <p className="text-gray-400 text-sm">
+        <div 
+          className="border-t pt-8 text-center"
+          style={{ borderColor: '#4a5568' }}
+        >
+          <p 
+            className="text-sm"
+            style={{ color: '#a0aec0' }}
+          >
             © 2025 Viewify. All rights reserved. Made with ❤️ for creators
             worldwide.
           </p>

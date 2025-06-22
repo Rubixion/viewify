@@ -194,19 +194,31 @@ const TemplateShowcase: React.FC<TemplateShowcaseProps> = ({ selectedCategory, o
   }, [selectedCategory, activeTab]);
 
   return (
-    <section className="py-20 bg-white">
+    <section 
+      className="py-20"
+      style={{ background: '#ffffff' }}
+    >
       <div className="container mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h2 
+            className="text-4xl md:text-5xl font-bold mb-6"
+            style={{ color: '#2d3748' }}
+          >
             Featured Templates
             {selectedCategory && selectedCategory !== 'all' && (
-              <span className="block text-2xl text-blue-600 mt-2 capitalize">
+              <span 
+                className="block text-2xl mt-2 capitalize"
+                style={{ color: '#667eea' }}
+              >
                 {selectedCategory} Collection
               </span>
             )}
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+          <p 
+            className="text-xl max-w-3xl mx-auto mb-8"
+            style={{ color: '#718096' }}
+          >
             Discover our most popular Instagram Story templates, 
             designed by professionals and loved by creators worldwide.
           </p>
@@ -217,11 +229,22 @@ const TemplateShowcase: React.FC<TemplateShowcaseProps> = ({ selectedCategory, o
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`px-4 py-2 md:px-6 md:py-3 rounded-lg font-semibold transition-all duration-200 text-sm md:text-base ${
-                  activeTab === tab.id
-                    ? 'bg-blue-600 text-white shadow-lg'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
+                className="px-4 py-2 md:px-6 md:py-3 rounded-lg font-semibold transition-all duration-200 text-sm md:text-base"
+                style={{
+                  background: activeTab === tab.id ? '#667eea' : '#f7fafc',
+                  color: activeTab === tab.id ? '#ffffff' : '#4a5568',
+                  boxShadow: activeTab === tab.id ? '0 4px 12px rgba(102, 126, 234, 0.3)' : 'none'
+                }}
+                onMouseEnter={(e) => {
+                  if (activeTab !== tab.id) {
+                    e.currentTarget.style.background = '#edf2f7';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (activeTab !== tab.id) {
+                    e.currentTarget.style.background = '#f7fafc';
+                  }
+                }}
               >
                 {tab.name}
               </button>
@@ -234,34 +257,74 @@ const TemplateShowcase: React.FC<TemplateShowcaseProps> = ({ selectedCategory, o
           {/* Scroll Buttons */}
           <button
             onClick={scrollLeft}
-            className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white shadow-lg rounded-full p-2 hover:bg-gray-50 transition-colors"
-            style={{ marginLeft: '-20px' }}
+            className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 rounded-full p-2 transition-colors"
+            style={{ 
+              marginLeft: '-20px',
+              background: '#ffffff',
+              boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = '#f7fafc';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = '#ffffff';
+            }}
           >
-            <ChevronLeft className="w-6 h-6 text-gray-600" />
+            <ChevronLeft className="w-6 h-6" style={{ color: '#4a5568' }} />
           </button>
           <button
             onClick={scrollRight}
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white shadow-lg rounded-full p-2 hover:bg-gray-50 transition-colors"
-            style={{ marginRight: '-20px' }}
+            className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 rounded-full p-2 transition-colors"
+            style={{ 
+              marginRight: '-20px',
+              background: '#ffffff',
+              boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = '#f7fafc';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = '#ffffff';
+            }}
           >
-            <ChevronRight className="w-6 h-6 text-gray-600" />
+            <ChevronRight className="w-6 h-6" style={{ color: '#4a5568' }} />
           </button>
 
           {/* Templates Container */}
           <div
             id="templates-scroll"
-            className="flex space-x-6 overflow-x-auto scrollbar-hide pb-4"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            className="flex space-x-6 overflow-x-auto pb-4"
+            style={{ 
+              scrollbarWidth: 'none', 
+              msOverflowStyle: 'none',
+              WebkitScrollbar: { display: 'none' }
+            }}
           >
             {templates.map((template) => (
               <div
                 key={template.id}
-                className="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer flex-shrink-0"
-                style={{ width: '240px' }}
+                className="group relative rounded-2xl overflow-hidden transition-all duration-300 transform hover:-translate-y-2 cursor-pointer flex-shrink-0"
+                style={{ 
+                  width: '240px',
+                  background: '#ffffff',
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
+                }}
                 onClick={() => handleTemplateClick(template)}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.15)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
+                }}
               >
                 {/* Template Image */}
-                <div className="relative overflow-hidden bg-gray-200" style={{ height: '320px' }}>
+                <div 
+                  className="relative overflow-hidden"
+                  style={{ 
+                    height: '320px',
+                    background: '#f7fafc'
+                  }}
+                >
                   <img
                     src={template.image}
                     alt={template.title}
@@ -269,28 +332,58 @@ const TemplateShowcase: React.FC<TemplateShowcaseProps> = ({ selectedCategory, o
                   />
                   
                   {/* Overlay */}
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <div 
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
+                    style={{ background: 'rgba(0, 0, 0, 0.4)' }}
+                  >
                     <div className="flex space-x-3">
                       <button 
                         onClick={(e) => handlePreview(template, e)}
-                        className="p-2 bg-white/90 rounded-full hover:bg-white transition-colors"
+                        className="p-2 rounded-full transition-colors"
+                        style={{ background: 'rgba(255, 255, 255, 0.9)' }}
                         title="Preview"
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.background = '#ffffff';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.background = 'rgba(255, 255, 255, 0.9)';
+                        }}
                       >
-                        <Eye className="w-4 h-4 text-gray-700" />
+                        <Eye className="w-4 h-4" style={{ color: '#4a5568' }} />
                       </button>
                       <button 
                         onClick={(e) => toggleFavorite(template.id, e)}
-                        className="p-2 bg-white/90 rounded-full hover:bg-white transition-colors"
+                        className="p-2 rounded-full transition-colors"
+                        style={{ background: 'rgba(255, 255, 255, 0.9)' }}
                         title="Add to favorites"
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.background = '#ffffff';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.background = 'rgba(255, 255, 255, 0.9)';
+                        }}
                       >
-                        <Heart className={`w-4 h-4 ${favorites.includes(template.id) ? 'fill-red-500 text-red-500' : 'text-gray-700'}`} />
+                        <Heart 
+                          className="w-4 h-4" 
+                          style={{ 
+                            fill: favorites.includes(template.id) ? '#e53e3e' : 'none',
+                            color: favorites.includes(template.id) ? '#e53e3e' : '#4a5568'
+                          }} 
+                        />
                       </button>
                       <button 
                         onClick={(e) => handleDownload(template, e)}
-                        className="p-2 bg-blue-600 rounded-full hover:bg-blue-700 transition-colors"
+                        className="p-2 rounded-full transition-colors"
+                        style={{ background: '#667eea' }}
                         title="Download"
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.background = '#5a67d8';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.background = '#667eea';
+                        }}
                       >
-                        <Download className="w-4 h-4 text-white" />
+                        <Download className="w-4 h-4" style={{ color: '#ffffff' }} />
                       </button>
                     </div>
                   </div>
@@ -298,7 +391,13 @@ const TemplateShowcase: React.FC<TemplateShowcaseProps> = ({ selectedCategory, o
                   {/* Premium Badge */}
                   {template.isPremium && (
                     <div className="absolute top-3 left-3">
-                      <div className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-yellow-900 px-2 py-1 rounded-full text-xs font-semibold">
+                      <div 
+                        className="px-2 py-1 rounded-full text-xs font-semibold"
+                        style={{
+                          background: 'linear-gradient(45deg, #feca57, #ff9ff3)',
+                          color: '#2d3748'
+                        }}
+                      >
                         Premium
                       </div>
                     </div>
@@ -306,11 +405,13 @@ const TemplateShowcase: React.FC<TemplateShowcaseProps> = ({ selectedCategory, o
 
                   {/* Price Badge */}
                   <div className="absolute top-3 right-3">
-                    <div className={`px-2 py-1 rounded-full text-xs font-semibold ${
-                      template.price === 'Free' 
-                        ? 'bg-green-500 text-white' 
-                        : 'bg-white text-gray-900'
-                    }`}>
+                    <div 
+                      className="px-2 py-1 rounded-full text-xs font-semibold"
+                      style={{
+                        background: template.price === 'Free' ? '#48bb78' : '#ffffff',
+                        color: template.price === 'Free' ? '#ffffff' : '#2d3748'
+                      }}
+                    >
                       {template.price}
                     </div>
                   </div>
@@ -319,18 +420,31 @@ const TemplateShowcase: React.FC<TemplateShowcaseProps> = ({ selectedCategory, o
                 {/* Template Info */}
                 <div className="p-4">
                   <div className="mb-2">
-                    <h3 className="text-lg font-bold text-gray-900 mb-1 truncate">{template.title}</h3>
-                    <p className="text-sm text-gray-500 capitalize">{template.category}</p>
+                    <h3 
+                      className="text-lg font-bold mb-1 truncate"
+                      style={{ color: '#2d3748' }}
+                    >
+                      {template.title}
+                    </h3>
+                    <p 
+                      className="text-sm capitalize"
+                      style={{ color: '#718096' }}
+                    >
+                      {template.category}
+                    </p>
                   </div>
 
                   {/* Stats */}
-                  <div className="flex items-center justify-between text-sm text-gray-500">
+                  <div 
+                    className="flex items-center justify-between text-sm"
+                    style={{ color: '#718096' }}
+                  >
                     <div className="flex items-center space-x-1">
                       <Download className="w-3 h-3" />
                       <span>{template.downloads > 999 ? `${Math.floor(template.downloads/1000)}k` : template.downloads}</span>
                     </div>
                     <div className="flex items-center space-x-1">
-                      <Star className="w-3 h-3 fill-yellow-400 text-yellow-400" />
+                      <Star className="w-3 h-3" style={{ fill: '#feca57', color: '#feca57' }} />
                       <span>{template.rating}</span>
                     </div>
                   </div>
@@ -342,26 +456,32 @@ const TemplateShowcase: React.FC<TemplateShowcaseProps> = ({ selectedCategory, o
 
         {templates.length === 0 && (
           <div className="text-center py-16">
-            <p className="text-xl text-gray-500">No templates found for the selected filters.</p>
+            <p 
+              className="text-xl"
+              style={{ color: '#718096' }}
+            >
+              No templates found for the selected filters.
+            </p>
             <button 
               onClick={() => {
                 setActiveTab('trending');
                 const event = new CustomEvent('categorySelect', { detail: 'all' });
                 window.dispatchEvent(event);
               }}
-              className="mt-4 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+              className="mt-4 px-6 py-2 rounded-lg transition-colors"
+              style={{ background: '#667eea', color: '#ffffff' }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = '#5a67d8';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = '#667eea';
+              }}
             >
               View All Templates
             </button>
           </div>
         )}
       </div>
-
-      <style jsx>{`
-        .scrollbar-hide::-webkit-scrollbar {
-          display: none;
-        }
-      `}</style>
     </section>
   );
 };
